@@ -33,8 +33,10 @@
             this.portTextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.connectButton = new System.Windows.Forms.Button();
             this.resultTextBox = new System.Windows.Forms.TextBox();
+            this.editButton = new System.Windows.Forms.Button();
+            this.addButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // keysListBox
@@ -81,31 +83,56 @@
             this.label2.TabIndex = 4;
             this.label2.Text = "Port";
             // 
-            // button1
+            // connectButton
             // 
-            this.button1.Location = new System.Drawing.Point(388, 33);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 27);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "Connect";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.Button1_Click);
+            this.connectButton.Location = new System.Drawing.Point(371, 36);
+            this.connectButton.Name = "connectButton";
+            this.connectButton.Size = new System.Drawing.Size(75, 27);
+            this.connectButton.TabIndex = 5;
+            this.connectButton.Text = "Connect";
+            this.connectButton.UseVisualStyleBackColor = true;
+            this.connectButton.Click += new System.EventHandler(this.Button1_Click);
             // 
             // resultTextBox
             // 
             this.resultTextBox.Location = new System.Drawing.Point(255, 79);
             this.resultTextBox.Multiline = true;
             this.resultTextBox.Name = "resultTextBox";
+            this.resultTextBox.ReadOnly = true;
             this.resultTextBox.Size = new System.Drawing.Size(326, 340);
             this.resultTextBox.TabIndex = 6;
+            // 
+            // editButton
+            // 
+            this.editButton.Enabled = false;
+            this.editButton.Location = new System.Drawing.Point(455, 36);
+            this.editButton.Name = "editButton";
+            this.editButton.Size = new System.Drawing.Size(67, 27);
+            this.editButton.TabIndex = 7;
+            this.editButton.Text = "Edit";
+            this.editButton.UseVisualStyleBackColor = true;
+            this.editButton.Click += new System.EventHandler(this.EditButton_Click);
+            // 
+            // addButton
+            // 
+            this.addButton.Enabled = false;
+            this.addButton.Location = new System.Drawing.Point(530, 36);
+            this.addButton.Name = "addButton";
+            this.addButton.Size = new System.Drawing.Size(51, 27);
+            this.addButton.TabIndex = 8;
+            this.addButton.Text = "Add";
+            this.addButton.UseVisualStyleBackColor = true;
+            this.addButton.Click += new System.EventHandler(this.Add_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(612, 450);
+            this.Controls.Add(this.addButton);
+            this.Controls.Add(this.editButton);
             this.Controls.Add(this.resultTextBox);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.connectButton);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.portTextBox);
@@ -125,8 +152,10 @@
         private System.Windows.Forms.TextBox portTextBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button connectButton;
         private System.Windows.Forms.TextBox resultTextBox;
+        private System.Windows.Forms.Button editButton;
+        private System.Windows.Forms.Button addButton;
     }
 }
 
