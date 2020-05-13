@@ -1,4 +1,4 @@
 # Redis-Desktop-Explorer
 
-![image](https://user-images.githubusercontent.com/2716202/81845949-f6561800-956e-11ea-81ee-67784b51f5db.png)
+![image](https://user-images.githubusercontent.com/2716202/81853606-41c1f380-957a-11ea-8dca-88107b94e4ed.png)
 

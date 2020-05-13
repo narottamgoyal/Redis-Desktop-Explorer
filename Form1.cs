@@ -19,20 +19,27 @@ namespace RedisDesktopExplorer
         public Form1()
         {
             InitializeComponent();
+            dbList.SelectedIndex = 0;
         }
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            string connectionString = $"{serverTextBox.Text}:{portTextBox.Text}";
-            ConfigurationOptions options = ConfigurationOptions.Parse(connectionString);
-            ConnectionMultiplexer connection = ConnectionMultiplexer.Connect(options);
-            _redisDb = connection.GetDatabase();
-            EndPoint endPoint = connection.GetEndPoints().First();
-            RedisKey[] keys = connection.GetServer(endPoint).Keys(pattern: "*").ToArray();
-            keysListBox.DataSource = keys;
-            connectButton.Text = "Refresh";
-            addButton.Enabled = true;
-            editButton.Enabled = true;
+            try
+            {
+                timer1.Start();
+                string connectionString = $"{serverTextBox.Text}:{portTextBox.Text}";
+                ConfigurationOptions options = ConfigurationOptions.Parse(connectionString);
+                ConnectionMultiplexer connection = ConnectionMultiplexer.Connect(options);
+                _redisDb = connection.GetDatabase(dbList.SelectedIndex);
+                EndPoint endPoint = connection.GetEndPoints().First();
+                RedisKey[] keys = connection.GetServer(endPoint).Keys(dbList.SelectedIndex, pattern: "*").ToArray();
+                keysListBox.DataSource = keys;
+                connectButton.Text = "Refresh";
+                addButton.Enabled = true;
+                editButton.Enabled = true;
+            }
+            catch
+            { }
         }
 
         private void KeysListBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -65,6 +72,11 @@ namespace RedisDesktopExplorer
                 resultTextBox.ReadOnly = true;
                 editButton.Text = "Edit";
             }
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            progressBar1.Increment(100);
         }
     }
 }
