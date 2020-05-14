@@ -1,4 +1,5 @@
-﻿using StackExchange.Redis;
+﻿using Microsoft.VisualBasic;
+using StackExchange.Redis;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,6 +17,7 @@ namespace RedisDesktopExplorer
     {
         private IDatabase _redisDb;
         private string currentItem;
+        private BindingList<string> keys;
         public Form1()
         {
             InitializeComponent();
@@ -32,7 +34,10 @@ namespace RedisDesktopExplorer
                 ConnectionMultiplexer connection = ConnectionMultiplexer.Connect(options);
                 _redisDb = connection.GetDatabase(dbList.SelectedIndex);
                 EndPoint endPoint = connection.GetEndPoints().First();
-                RedisKey[] keys = connection.GetServer(endPoint).Keys(dbList.SelectedIndex, pattern: "*").ToArray();
+                var ke = connection.GetServer(endPoint).Keys(dbList.SelectedIndex, pattern: "*").ToList();
+                keys = new BindingList<string>();
+                foreach (var k in ke)
+                    keys.Add(k);
                 keysListBox.DataSource = keys;
                 connectButton.Text = "Refresh";
                 addButton.Enabled = true;
@@ -55,7 +60,13 @@ namespace RedisDesktopExplorer
 
         private void Add_Click(object sender, EventArgs e)
         {
-
+            var response = Interaction.InputBox("Enter Key name", "New Key", "");
+            keys.Add(response);
+            keysListBox.SelectedIndex = keys.Count - 1;
+            resultTextBox.ReadOnly = false;
+            editButton.Text = "Save";
+            addButton.Enabled = false;
+            resultTextBox.Focus();
         }
 
         private void EditButton_Click(object sender, EventArgs e)
@@ -71,12 +82,21 @@ namespace RedisDesktopExplorer
                 _redisDb.StringSet(currentItem, resultTextBox.Text);
                 resultTextBox.ReadOnly = true;
                 editButton.Text = "Edit";
+                addButton.Enabled = true;
             }
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
             progressBar1.Increment(100);
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(currentItem)) return;
+            keys.Remove(currentItem);
+            _redisDb.KeyDelete(currentItem);
+            currentItem = keysListBox.SelectedItem.ToString();
         }
     }
 }

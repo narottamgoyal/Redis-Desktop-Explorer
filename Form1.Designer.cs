@@ -42,13 +42,16 @@
             this.label3 = new System.Windows.Forms.Label();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // keysListBox
             // 
             this.keysListBox.FormattingEnabled = true;
             this.keysListBox.ItemHeight = 16;
-            this.keysListBox.Location = new System.Drawing.Point(29, 79);
+            this.keysListBox.Location = new System.Drawing.Point(29, 94);
             this.keysListBox.Name = "keysListBox";
             this.keysListBox.Size = new System.Drawing.Size(200, 340);
             this.keysListBox.TabIndex = 0;
@@ -100,7 +103,7 @@
             // 
             // resultTextBox
             // 
-            this.resultTextBox.Location = new System.Drawing.Point(247, 79);
+            this.resultTextBox.Location = new System.Drawing.Point(247, 94);
             this.resultTextBox.Multiline = true;
             this.resultTextBox.Name = "resultTextBox";
             this.resultTextBox.ReadOnly = true;
@@ -177,11 +180,42 @@
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(26, 71);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(39, 17);
+            this.label4.TabIndex = 12;
+            this.label4.Text = "Keys";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(244, 71);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(51, 17);
+            this.label5.TabIndex = 13;
+            this.label5.Text = "Values";
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(587, 99);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(39, 27);
+            this.button2.TabIndex = 15;
+            this.button2.Text = "X";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(666, 450);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.dbList);
@@ -194,7 +228,9 @@
             this.Controls.Add(this.portTextBox);
             this.Controls.Add(this.serverTextBox);
             this.Controls.Add(this.keysListBox);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Redis Desktop Explorer";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -216,6 +252,9 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button button2;
     }
 }
 
