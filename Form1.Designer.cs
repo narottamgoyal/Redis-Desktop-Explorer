@@ -45,6 +45,8 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
+            this.expireTimeLabel = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // keysListBox
@@ -208,11 +210,31 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
+            // expireTimeLabel
+            // 
+            this.expireTimeLabel.AutoSize = true;
+            this.expireTimeLabel.Location = new System.Drawing.Point(502, 71);
+            this.expireTimeLabel.Name = "expireTimeLabel";
+            this.expireTimeLabel.Size = new System.Drawing.Size(27, 17);
+            this.expireTimeLabel.TabIndex = 16;
+            this.expireTimeLabel.Text = "NA";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(434, 71);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(62, 17);
+            this.label7.TabIndex = 17;
+            this.label7.Text = "Expire In";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(666, 450);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.expireTimeLabel);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -229,6 +251,7 @@
             this.Controls.Add(this.serverTextBox);
             this.Controls.Add(this.keysListBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.MaximizeBox = false;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Redis Desktop Explorer";
@@ -255,6 +278,8 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Label expireTimeLabel;
+        private System.Windows.Forms.Label label7;
     }
 }
 

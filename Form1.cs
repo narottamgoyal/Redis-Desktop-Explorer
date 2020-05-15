@@ -52,10 +52,21 @@ namespace RedisDesktopExplorer
             // Get the currently selected item in the ListBox.
             currentItem = keysListBox.SelectedItem.ToString();
             if (currentItem != null)
+            {
                 resultTextBox.Text = _redisDb.StringGet(currentItem);
-
+                ShowTime();
+            }
             resultTextBox.ReadOnly = true;
             editButton.Text = "Edit";
+        }
+
+        private void ShowTime()
+        {
+            try
+            {
+                expireTimeLabel.Text = _redisDb.KeyTimeToLive(currentItem).Value.ToString();
+            }
+            catch { expireTimeLabel.Text = "NA"; }
         }
 
         private void Add_Click(object sender, EventArgs e)
