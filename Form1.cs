@@ -29,6 +29,7 @@ namespace RedisDesktopExplorer
             try
             {
                 timer1.Start();
+                resultTextBox.Text = string.Empty;
                 string connectionString = $"{serverTextBox.Text}:{portTextBox.Text}";
                 ConfigurationOptions options = ConfigurationOptions.Parse(connectionString);
                 ConnectionMultiplexer connection = ConnectionMultiplexer.Connect(options);
@@ -73,6 +74,7 @@ namespace RedisDesktopExplorer
             var response = Interaction.InputBox("Enter Key name", "New Key", "");
             keys.Add(response);
             keysListBox.SelectedIndex = keys.Count - 1;
+            currentItem = response;
             resultTextBox.ReadOnly = false;
             editButton.Text = "Save";
             addButton.Enabled = false;
