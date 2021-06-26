@@ -106,10 +106,10 @@ namespace RedisDesktopExplorer
         private void button2_Click(object sender, EventArgs e)
         {
             resultTextBox.Text = string.Empty;
-            if (string.IsNullOrWhiteSpace(currentItem)) return;
-            keys.Remove(currentItem);
-            if (string.IsNullOrWhiteSpace(currentItem)) return;
-            _redisDb.KeyDelete(currentItem);
+            var key = currentItem;
+            if (string.IsNullOrWhiteSpace(key)) return;
+            keys.Remove(key);
+            _redisDb.KeyDelete(key);
             if (keys.Count > 0)
                 keysListBox.SelectedIndex = keys.Count - 1;
         }

@@ -65,7 +65,7 @@
             this.serverTextBox.Name = "serverTextBox";
             this.serverTextBox.Size = new System.Drawing.Size(200, 22);
             this.serverTextBox.TabIndex = 1;
-            this.serverTextBox.Text = "192.168.99.100";
+            this.serverTextBox.Text = "192.168.99.101";
             // 
             // portTextBox
             // 
